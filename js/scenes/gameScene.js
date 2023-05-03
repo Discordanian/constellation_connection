@@ -112,6 +112,7 @@ class gameScene extends Phaser.Scene {
         var xOffset = (gc.miniArea.scale * 100) + (3 * gc.border);
         var yOffset = gc.border * 2;
 
+        /*
         lastDrawn = this.add.image(xOffset, yOffset, 'begin').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
             this.disablePoints();
             this.gameConfig.level = 0;
@@ -135,6 +136,8 @@ class gameScene extends Phaser.Scene {
             this.scene.start('Credits', this.gameConfig);
         }, this);
         xOffset = lastDrawn.x + gc.border + lastDrawn.width / 2;
+        */
+        xOffset = game.config.width - (gc.border); // 20230503 working to right justify refresh
         lastDrawn = this.add.image(xOffset, yOffset, 'refresh').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
             this.disablePoints();
             this.scene.start('Game', this.gameConfig);
