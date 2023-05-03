@@ -19,12 +19,12 @@ class creditsScene extends Phaser.Scene {
         let wScale = (0.5) * this.sys.game.config.width / logo.width;
         let minScale = Math.min(hScale, wScale);
         logo.setScale(minScale, minScale);
-        logo.setAlpha(0.9);
+        logo.setAlpha(1.0);
 
 
         let gc = this.gameConfig; // Let's it pass into the inner 'this' of the pointerdown function
 
-        let pA = "[ PLAY AGAIN ]";
+        let pA = "-= PLAY AGAIN =-";
         let pAText = this.add.text(gameW / 2, gameH / 3.7, pA, {
             font: '40px Arial',
             fill: '#222222'
