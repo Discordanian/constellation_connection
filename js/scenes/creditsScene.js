@@ -25,7 +25,7 @@ class creditsScene extends Phaser.Scene {
         let gc = this.gameConfig; // Let's it pass into the inner 'this' of the pointerdown function
 
         let pA = "-= PLAY AGAIN =-";
-        let pAText = this.add.text(gameW / 2, gameH / 3.7, pA, {
+        let pAText = this.add.text(gameW / 2, gameH / 2.7, pA, {
             font: '40px Arial',
             fill: '#222222'
         }).setOrigin(0.5, 0.5).setInteractive();
