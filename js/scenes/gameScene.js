@@ -15,6 +15,7 @@ class gameScene extends Phaser.Scene {
         this.winningSet = new Set(gc.solutions[gc.level]);
         this.playerSet = new Set();
 
+        this.graphics.clear();
 
         if (gc.level > (gc.levelDesign.length - 1)) {
             // We are past the end level
@@ -111,32 +112,6 @@ class gameScene extends Phaser.Scene {
         let lastDrawn;
         var xOffset = (gc.miniArea.scale * 100) + (3 * gc.border);
         var yOffset = gc.border * 2;
-
-        /*
-        lastDrawn = this.add.image(xOffset, yOffset, 'begin').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
-            this.disablePoints();
-            this.gameConfig.level = 0;
-            this.scene.start('Game', this.gameConfig);
-        }, this);
-        xOffset = lastDrawn.x + gc.border + lastDrawn.width / 2;
-        lastDrawn = this.add.image(xOffset, yOffset, 'back').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
-            this.disablePoints();
-            this.gameConfig.level = Math.max(this.gameConfig.level - 1, 0);;
-            this.scene.start('Game', this.gameConfig);
-        }, this);
-        xOffset = lastDrawn.x + gc.border + lastDrawn.width / 2;
-        lastDrawn = this.add.image(xOffset, yOffset, 'next').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
-            this.disablePoints();
-            this.gameConfig.level += 1;
-            this.scene.start('Game', this.gameConfig);
-        }, this);
-        xOffset = lastDrawn.x + gc.border + lastDrawn.width / 2;
-        lastDrawn = this.add.image(xOffset, yOffset, 'end').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
-            this.disablePoints();
-            this.scene.start('Credits', this.gameConfig);
-        }, this);
-        xOffset = lastDrawn.x + gc.border + lastDrawn.width / 2;
-        */
         xOffset = game.config.width - (gc.border); // 20230503 working to right justify refresh
         lastDrawn = this.add.image(xOffset, yOffset, 'refresh').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
             this.disablePoints();
@@ -165,6 +140,9 @@ class gameScene extends Phaser.Scene {
                 callback: function() {
                     // Clean up this HUD and take them HOME
                     this.gameConfig.level += 1;
+		    this.allPoints = [];
+		    this.miniPoints = [];
+		    this.prevPoint = undefined;
                     this.scene.start('Game', this.gameConfig);
                 }
             }, this);
@@ -234,4 +212,49 @@ class gameScene extends Phaser.Scene {
         });
 
     } // gameOver()
+    shutdown() {
+        // Clear all graphics
+        if (this.graphics) {
+            this.graphics.clear();
+            this.graphics.destroy();
+        }
+
+        // Clear all points and their event listeners
+        if (this.allPoints) {
+            this.allPoints.forEach(point => {
+                if (point) {
+                    point.off('pointerdown');
+                    point.destroy();
+                }
+            });
+            this.allPoints = [];
+        }
+
+        // Clear all mini points
+        if (this.miniPoints) {
+            this.miniPoints.forEach(point => {
+                if (point) {
+                    point.destroy();
+                }
+            });
+            this.miniPoints = [];
+        }
+
+        // Clear any active timers
+        if (this.timeEventStats) {
+            this.timeEventStats.remove();
+        }
+
+        // Reset game state
+        this.prevPoint = undefined;
+        this.playerSet = new Set();
+        this.winningSet = new Set();
+
+        // Clear any remaining game objects
+        this.children.each(child => {
+            if (child) {
+                child.destroy();
+            }
+        });
+    }
 } // gameScene
