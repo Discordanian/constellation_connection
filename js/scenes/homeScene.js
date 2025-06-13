@@ -11,8 +11,6 @@ class homeScene extends Phaser.Scene {
         let gameW = this.sys.game.config.width;
 
 
-        // let bg = this.add.sprite(0,0,'background').setOrigin(0,0).setInteractive(); // upper corner in the upper corner
-
         // game Background with active input to start the game
         let bg = this.add.sprite(gameW / 2, gameH / 2, 'background').setOrigin(0.5, 0.5).setInteractive();
 
@@ -96,18 +94,6 @@ class homeScene extends Phaser.Scene {
 
         let usedHeight = squareDim + newMenuHeight;
         remainderH = gameH - usedHeight; // BEWARE variable re-use
-        /*
-        console.log({
-            h: gameH,
-            nmh: newMenuHeight,
-            sd: squareDim
-        });
-        */
-        /*
-        gc.playArea.offsetY = Math.floor(
-            ((gameH - newMenuHeight)/2) - (squareDim/2)
-            );
-            */
         gc.playArea.offsetY = newMenuHeight + (6 * border);
 
         gc.info(gc.playArea);
