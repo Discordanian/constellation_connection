@@ -71,25 +71,13 @@ class loadingScene extends Phaser.Scene {
 
         // Load the levels and solution
         // Try and disable cache
-        let dc="assets/data/levels.json?"+Math.random();
-        this.load.json('levelData',dc);
+        let dc = "assets/data/levels.json?" + Math.random();
+        this.load.json('levelData', dc);
 
 
     }
     create() {
-        // animations can be created here
-        // FLY
-        /*
-        this.anims.create({
-            key: 'funnyfaces',
-            frames: this.anims.generateFrameNames('pet',{ frames: [1,2,3] } ),
-            yoyo: true,
-            frameRate: 7,
-            repeat: 0
-        });
-        */
 
         this.scene.start('Config', this.gameConfig);
-
     }
 } // loadingScene

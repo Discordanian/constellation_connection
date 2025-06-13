@@ -20,6 +20,7 @@ class gameScene extends Phaser.Scene {
         if (gc.level > (gc.levelDesign.length - 1)) {
             // We are past the end level
             gc.info("Going to jump to Credits");
+            this.scene.stop();
             this.scene.start('Credits', gc);
         } else {
             // We are ready to play the game.
@@ -84,7 +85,9 @@ class gameScene extends Phaser.Scene {
             }
         }
 
-        if(!retval) { this.cameras.main.shake(35); } // Negative response
+        if (!retval) {
+            this.cameras.main.shake(35);
+        } // Negative response
         return retval;
     }
     registerPoint(image, id) {
@@ -115,6 +118,7 @@ class gameScene extends Phaser.Scene {
         xOffset = game.config.width - (gc.border); // 20230503 working to right justify refresh
         lastDrawn = this.add.image(xOffset, yOffset, 'refresh').setScale(0.5).setInteractive().on('pointerdown', function(pointer) {
             this.disablePoints();
+            this.scene.stop();
             this.scene.start('Game', this.gameConfig);
         }, this);
     } // createHUD
@@ -140,9 +144,7 @@ class gameScene extends Phaser.Scene {
                 callback: function() {
                     // Clean up this HUD and take them HOME
                     this.gameConfig.level += 1;
-		    this.allPoints = [];
-		    this.miniPoints = [];
-		    this.prevPoint = undefined;
+                    this.scene.stop();
                     this.scene.start('Game', this.gameConfig);
                 }
             }, this);
@@ -207,6 +209,7 @@ class gameScene extends Phaser.Scene {
             callbackScope: this,
             callback: function() {
                 // Clean up this HUD and take them HOME
+                this.scene.stop();
                 this.scene.start('Credits', gc);
             }
         });
