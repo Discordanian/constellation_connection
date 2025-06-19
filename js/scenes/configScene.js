@@ -10,7 +10,7 @@ class configScene extends Phaser.Scene {
         let gameConfig = {
             "score": 0,
             "logLevel": 0, // 0 is error only, 1 is info and error, 2 is info, error and debug, -1 will turn it all off
-            "title": "Constellation Connection",
+            "title": "Constellation Connection\n\n\nTangential Cold Studios",
             "border": 15,
             "minMenu": 120,
             "playArea": {
