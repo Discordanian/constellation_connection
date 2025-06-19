@@ -30,6 +30,9 @@ Refresh button from: Icons made by <a href="https://www.flaticon.com/authors/fre
 # Dev notes
 When designing levels, make sure to enter the pairs in ascending order.
 
+# Lessons Learned
+I'm using a json file for the levels and because json lacks comment support I should have used dictionaries/associative arrays instead of positional arrays for the data points.
+
 # Tool links
 - http://asciiflow.com/
 - http://www.patorjk.com/software/taag/#p=display&f=Colossal&t=Type%20Something%20U
