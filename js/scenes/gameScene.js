@@ -162,12 +162,10 @@ class gameScene extends Phaser.Scene {
     // compare two sets.  Only way is via iteration
     setEqual(setA, setB) {
         if (setA.size !== setB.size) {
-            // this.gameConfig.info("Sets do not match in size.  So not equal");
             return false;
         }
         for (var a of setA)
             if (!setB.has(a)) {
-                // this.gameConfig.info("Winning Set doesn't have [" + a + "]");
                 return false;
             }
         return true;
