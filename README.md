@@ -1,5 +1,4 @@
-Graph Game
-==========
+# Graph Game
 ```
   .d8888b.                           888            .d8888b.                                  
  d88P  Y88b                          888           d88P  Y88b                                 
@@ -14,28 +13,23 @@ Graph Game
                             888                                                               
 
 ```
-Concept
--------
+# Concept
 
 Connect the 'dots' on the screen to match the target solution.
 
-Possible Credits
-----------------
+# Possible Credits
 
 Refresh button from: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
 
 
-TODO
-----
-* Change placeholder images
-* Spritesheet?
-* more levels
-* Name:  'Constelations' ?
-* Restrict canvas width on desktop
+# TODO
+- Spritesheet?
+- more levels
 
+# Dev notes
+When designing levels, make sure to enter the pairs in ascending order.
 
-Tool links
-----------
-* http://asciiflow.com/
-* http://www.patorjk.com/software/taag/#p=display&f=Colossal&t=Type%20Something%20U
+# Tool links
+- http://asciiflow.com/
+- http://www.patorjk.com/software/taag/#p=display&f=Colossal&t=Type%20Something%20U
